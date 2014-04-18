@@ -1,0 +1,33 @@
+extends ../layout
+
+block content
+  form.form-horizontal(id='signup-form', method='POST')
+    input(type='hidden', name='_csrf', value=_csrf)
+    legend Edit Nag
+    .form-group
+      label.col-sm-3.control-label(for='title') Name of Site
+      .col-sm-7
+        input.form-control(type='text', name='title', id='title', placeholder='Blog Name', autofocus, value='#{blog.title}')
+    .form-group
+      label.col-sm-3.control-label(for='url') URL
+      .col-sm-7
+        input.form-control(type='text', name='url', id='url', placeholder='http://', value='#{blog.url}')
+    .form-group
+      label.col-sm-3.control-label(for='days') Max Days Between Posts
+      .col-sm-7
+        input.form-control(type='text', name='days', id='days', placeholder='7', value='#{blog.days_until_nag}')
+    .form-group
+      .col-sm-offset-3.col-sm-7
+        button.btn.btn-success(type='submit')
+          i.fa.fa-check
+          | Change
+
+  .page-header
+    h3 Delete Nag
+
+  p You can delete this nag, but keep in mind this action is irreversible.
+  form(action='/account/blog/#{blog.id}/delete', method='POST')
+    input(type='hidden', name='_csrf', value=token)
+    button.btn.btn-danger(type='submit')
+      i.fa.fa-trash-o
+      | Delete

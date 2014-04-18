@@ -1,0 +1,23 @@
+extends ../layout
+
+block content
+  form.form-horizontal(id='signup-form', method='POST')
+    input(type='hidden', name='_csrf', value=_csrf)
+    legend New Nag
+    .form-group
+      label.col-sm-3.control-label(for='name') Name of Site
+      .col-sm-7
+        input.form-control(type='text', name='name', id='name', placeholder='Blog Name', autofocus)
+    .form-group
+      label.col-sm-3.control-label(for='url') URL
+      .col-sm-7
+        input.form-control(type='text', name='url', id='url', placeholder='http://')
+    .form-group
+      label.col-sm-3.control-label(for='days') Max Days Between Posts
+      .col-sm-7
+        input.form-control(type='text', name='days', id='days', placeholder='7')
+    .form-group
+      .col-sm-offset-3.col-sm-7
+        button.btn.btn-success(type='submit')
+          i.fa.fa-check
+          | Nag Me

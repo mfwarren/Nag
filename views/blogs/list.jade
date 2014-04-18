@@ -1,0 +1,11 @@
+extends ../layout
+
+block content
+  .col-sm-8.col-sm-offset-2
+    h3 Your Blogs
+    a(href='/account/blog/new').btn.btn-primary.pull-right Add a Nag
+    ul
+      each blog in blogs
+        li
+          a(href='/account/blog/#{blog.id}') #{blog.url}
+          |  every #{blog.days_until_nag} days
